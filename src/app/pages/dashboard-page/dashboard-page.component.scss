@@ -1,0 +1,18 @@
+.bg-grad {
+    background-image: linear-gradient(#285e61,#4a5568);
+  }
+
+.top-div {
+    -moz-transform:rotate(-90deg);
+    -webkit-transform:rotate(-90deg);
+    -o-transform:rotate(-90deg);
+    -ms-transform:rotate(-90deg);
+}
+
+.inner-item {
+    float:left;
+    -moz-transform:rotate(90deg);
+    -webkit-transform:rotate(90deg);
+    -o-transform:rotate(90deg);
+    -ms-transform:rotate(90deg); 
+}

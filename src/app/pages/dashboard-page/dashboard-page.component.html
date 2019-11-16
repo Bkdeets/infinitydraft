@@ -1,0 +1,43 @@
+<div class="bg-gray-100 border-bottom py-2 mb-10 bg-grad">
+    <ul class="flex">
+        <li class="ml-4 my-2">
+          <p class="font-bold text-2xl text-white">Infinity Draft</p>
+        </li>
+    </ul>
+</div>
+<div class="flex justify-center w-full mx-auto">
+    <div class="max-w-sm mr-5 rounded shadow-2xl bg-gray-100 my-10 w-1/4">
+        <div class="px-6 py-4">
+            <div class="text-xl font-bold mb-4 text-center">Generate Lineups</div>
+            <p class="text-sm text-gray-500">Sport</p>
+            <select class="bg-white mb-3 focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block w-full appearance-none leading-normal" placeholder="Pick Sport...">
+                <option value="soc">SOC</option>
+                <option value="nfl">NFL</option>
+                <option value="nba">NBA</option>
+            </select>
+            <p class="text-sm text-gray-500">Budget</p>
+            <input class="bg-white mb-3 focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block w-full appearance-none leading-normal" type="number" placeholder="$50,000">
+            <p class="text-sm text-gray-500">Game Type</p>
+            <select class="bg-white mb-3 focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block w-full appearance-none leading-normal" placeholder="Pick Sport...">
+                <option value="soc">Classic</option>
+                <option value="nfl">Showdown</option>
+            </select>        
+            <p class="text-sm text-gray-500">Number of lineups</p>
+            <input class="bg-white mb-5 focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block w-full appearance-none leading-normal" type="number" placeholder="10">
+            <div class="flex justify-end mt-2">
+                <button class="rounded bg-green-500 mr-2 p-2 text-white hover:bg-green-300">Upload Player CSV</button>
+                <button class="rounded bg-blue-500 p-2 text-white hover:bg-blue-300" type="submit">Permute</button>
+            </div>
+        </div>
+    </div>
+    <div class="max-w-2xl mr-5 rounded overflow-hidden shadow-2xl bg-gray-100 my-10 w-full">
+        <div class="px-6 py-4">
+            <div class="text-xl font-bold mb-4 text-center">Results</div>
+            <div class="flex justify-end">
+                <button class="rounded bg-green-500 mr-2 p-2 text-white hover:bg-green-300">Download Results</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
