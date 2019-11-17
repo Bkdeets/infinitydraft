@@ -13,7 +13,7 @@ export class DashboardPageComponent implements OnInit {
 
   ngOnInit() {
     this.uploadedFile = {
-      name: '~/dx_salaries.csv'
+      name: 'dk_salaries.csv'
     }
   }
 
@@ -33,12 +33,11 @@ export class DashboardPageComponent implements OnInit {
       }
     } else {
       alert('The File APIs are not fully supported in this browser.');
-    }      
+    }
   }
     
   changeFileInputPlaceholderTextColor(){
     const elem = document.getElementById('fileInputPlaceholder');
     elem.style.color = "black";
   }
-
 }
