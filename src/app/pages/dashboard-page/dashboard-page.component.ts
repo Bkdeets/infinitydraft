@@ -1,4 +1,7 @@
+import { PermuterService } from './../../services/permuter.service';
+import { ApiWrapperService } from './../../services/api-wrapper.service';
 import { Component, OnInit } from '@angular/core';
+import { parse } from 'papaparse';
 
 @Component({
   selector: 'dashboard-page',
@@ -8,32 +11,54 @@ import { Component, OnInit } from '@angular/core';
 export class DashboardPageComponent implements OnInit {
   uploadedFile: any;
   uploadResults: any;
+  wrapper: ApiWrapperService;
+  permuter: PermuterService;
+  teams: any;
 
-  constructor() { }
+  formValues: any;
+
+
+  constructor(
+    wrapper: ApiWrapperService) {
+    this.wrapper = wrapper;
+    this.permuter = new PermuterService();
+    this.permuter.budget = 50000;
+    this.formValues = {};
+   }
 
   ngOnInit() {
     this.uploadedFile = {
-      name: 'dk_salaries.csv'
+      name: 'dk_salaries.csv',
+      isDemo: true
     }
   }
 
-  handleFileUpload(){
+  handleFileUpload(files: FileList){
     this.changeFileInputPlaceholderTextColor();
-    const file = document.getElementById('inputGroupFile01').files[0];
+    const file = files[0];
     this.uploadedFile = file;
-    // Check for the various File API support.
-    if (window.File && window.FileReader && window.FileList && window.Blob) {
-      var reader = new FileReader();
-      reader.readAsText(file, "UTF-8");
-      reader.onload = function (evt) {
-        document.getElementById("uploadResult").innerHTML = evt.target.result;
-      }
-      reader.onerror = function (evt) {
-          document.getElementById("uploadResult").innerHTML = "error reading file";
-      }
-    } else {
-      alert('The File APIs are not fully supported in this browser.');
+  }
+
+  changeInput(event, inputId){
+    this.formValues[inputId] = event.target.value;
+  }
+
+  handlePermuteClick(){
+    if(this.uploadedFile.isDemo){
+      console.log('no file -- build an alert box');
     }
+    console.log(this.formValues);
+    
+    parse(this.uploadedFile, {
+      complete: (results) => {
+        this.teams = this.permuter.permute(
+          results.data, 
+          +this.formValues.budget,
+          this.formValues.sport,
+          this.formValues.game_type,
+          this.formValues.number_of_lineups);
+      }
+    });
   }
     
   changeFileInputPlaceholderTextColor(){

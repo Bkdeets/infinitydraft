@@ -1,0 +1,23 @@
+<table class="mb-5 mx-auto w-full">
+    <thead *ngIf="index == 0">
+        <tr>
+            <th class="px-4 py-2 w-1/6">Position</th>
+            <th class="px-4 py-2 w-2/6">Name</th>
+            <th class="px-4 py-2 w-1/6">Salary</th>
+            <th class="px-4 py-2 w-1/6">FPPG</th>
+            <th class="px-4 py-2 w-1/6">FPPG Ratio</th>
+        </tr>
+    </thead>
+    <tbody>
+        <p class="ml-2">
+            Score: {{team.score | number: '1.2-2'}}
+        </p>
+        <tr *ngFor="let player of team.team">
+            <td class="border px-4 py-2 w-1/6">{{player.Position}}</td>
+            <td class="border px-4 py-2 w-2/6">{{player.Name}}</td>
+            <td class="border px-4 py-2 w-1/6">${{player.Salary}}</td>
+            <td class="border px-4 py-2 w-1/6">{{player.FPPG | number: '1.2-2'}}</td>
+            <td class="border px-4 py-2 w-1/6">{{player.FPPGRatio | number: '1.0-0' }}</td>
+        </tr>
+    </tbody>
+</table>
