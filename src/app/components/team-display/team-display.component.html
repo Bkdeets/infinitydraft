@@ -1,4 +1,4 @@
-<table class="mb-5 mx-auto w-full">
+<table class="mb-2 mx-auto w-full">
     <thead *ngIf="index == 0">
         <tr>
             <th class="px-4 py-2 w-1/6">Position</th>
@@ -21,3 +21,6 @@
         </tr>
     </tbody>
 </table>
+<div class="flex justify-end mb-5">
+    <button class="rounded bg-green-500 mr-2 p-1 text-white hover:bg-green-300" (click)="copyIds()">Copy Ids</button>
+</div>
