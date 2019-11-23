@@ -35,19 +35,19 @@ export class TeamDisplayComponent implements OnInit {
       F: [],
       M: [],
       D: [],
-      GK: [],
-      UTIL: []
+      GK: []
     }
     let players = this.team.team;
     for(let player of players) {
       pos[player.Position].push(player.Id)
     }
+    let ending = '';
     let csvString = '';
     let index = 0;
     for (var prop in pos) {
       if (Object.prototype.hasOwnProperty.call(pos, prop)) {
         if(pos[prop].length > 2) {
-          pos.UTIL.push(pos[prop].pop());
+          ending = pos[prop].pop();
         }
         for(let id of pos[prop]){
           if(index == 0){
@@ -60,6 +60,7 @@ export class TeamDisplayComponent implements OnInit {
         }
       }
     }
+    csvString += ',' + ending;
     this.copy(csvString);
     this.showPositions()
   }
@@ -69,19 +70,19 @@ export class TeamDisplayComponent implements OnInit {
       F: [],
       M: [],
       D: [],
-      GK: [],
-      UTIL: []
+      GK: []
     }
     let players = this.team.team;
     for(let player of players) {
       pos[player.Position].push(player.Position)
     }
+    let ending = '';
     let csvString = '';
     let index = 0;
     for (var prop in pos) {
       if (Object.prototype.hasOwnProperty.call(pos, prop)) {
           if(pos[prop].length > 2) {
-            pos.UTIL.push(pos[prop].pop());
+            ending = pos[prop].pop();
           }
           for(let id of pos[prop]){
             if(index == 0){
@@ -94,7 +95,7 @@ export class TeamDisplayComponent implements OnInit {
           }
       }
     }
-    console.log(csvString);
+    console.log(csvString+','+ending);
   }
 
 }
