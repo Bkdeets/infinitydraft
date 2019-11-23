@@ -30,6 +30,7 @@ export class TeamDisplayComponent implements OnInit {
 
   copyIds(){
     let format = ['F','F','M','M','D','D','GK','UTIL']
+    let positionsString = '';
     let pos = {
       F: [],
       M: [],
@@ -45,6 +46,43 @@ export class TeamDisplayComponent implements OnInit {
     let index = 0;
     for (var prop in pos) {
       if (Object.prototype.hasOwnProperty.call(pos, prop)) {
+        if(pos[prop].length > 2) {
+          pos.UTIL.push(pos[prop].pop());
+        }
+        for(let id of pos[prop]){
+          if(index == 0){
+            csvString += id;
+            index += 1;
+          }
+          else {
+            csvString += ','+id;
+          }
+        }
+      }
+    }
+    this.copy(csvString);
+    this.showPositions()
+  }
+  showPositions(){
+    let format = ['F','F','M','M','D','D','GK','UTIL']
+    let pos = {
+      F: [],
+      M: [],
+      D: [],
+      GK: [],
+      UTIL: []
+    }
+    let players = this.team.team;
+    for(let player of players) {
+      pos[player.Position].push(player.Position)
+    }
+    let csvString = '';
+    let index = 0;
+    for (var prop in pos) {
+      if (Object.prototype.hasOwnProperty.call(pos, prop)) {
+          if(pos[prop].length > 2) {
+            pos.UTIL.push(pos[prop].pop());
+          }
           for(let id of pos[prop]){
             if(index == 0){
               csvString += id;
@@ -56,7 +94,7 @@ export class TeamDisplayComponent implements OnInit {
           }
       }
     }
-    this.copy(csvString);
+    console.log(csvString);
   }
 
 }
