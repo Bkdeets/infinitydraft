@@ -90,7 +90,7 @@ export class PermuterService {
     let teams = [];
     let scores = [];
     let iterations = 0;
-    while(teams.length < 100 && iterations < 10000000){
+    while(teams.length < 1000 && iterations < 10000000){
       let playersCopy: Array<Player> = Object.assign([], this.players);
       playersCopy = playersCopy.splice(0,Math.round(playersCopy.length/2));
       let budgetCopy = budget;
