@@ -1,0 +1,41 @@
+<jw-modal id="how-to-use">
+    <div class="mt-3 mb-4">
+        <h1 class="text-xl text-center font-weight-bold">How to use</h1>
+    </div>
+    <div class="flex w-10/12 mx-auto">
+        <ul class="mb-2">
+            <li class="mb-2">
+                <b>1</b>
+                Download CSV file from Draft Kings for the contest you want to generate lineups for
+            </li>
+            <li class="mb-2">
+                <b>2</b>
+                Visit the Infinity Draft permuter and fill required fields in
+            </li>
+            <li class="mb-2">
+                <b>3</b>
+                Upload CSV file
+            </li>
+            <li class="mb-2">
+                <b>4</b>
+                Click 'Permute' and wait as lineups are generated!
+            </li>
+        </ul>
+    </div>
+    <div class="w-10/12 mx-auto">
+        <p>
+                The <b>Score</b> metric is the sum of the Average Fantasy Points Per Game for 
+                each player on the team.
+        </p>
+        <p>
+            If you like a lineup, you can click <b>Copy Ids</b> which copies a CSV string to your
+            clipboard. It can then be pasted into an excel file to be imported into Draft Kings.
+        </p>
+    </div>
+    <div class="flex justify-end justify-content-end">
+        <button 
+            class="bg-red-500 rounded hover:bg-red-300 text-white py-1 px-2"
+            (click)="closeModal('how-to-use')">Close
+        </button>
+    </div>
+</jw-modal>

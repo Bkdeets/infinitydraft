@@ -1,58 +1,101 @@
-<div class="bg-gray-100 py-2 mb-3 bg-grad">
-    <ul class="flex">
-        <li class="ml-4 my-2">
-          <p class="font-bold text-2xl text-white">Infinity Draft</p>
-        </li>
-    </ul>
-</div>
-<div class="mx-auto mb-7 text-center">
-    <p class="text-lg text-white">Generate random fantasy lineups optimized by Fantasy Points Per Game!</p>
-</div>
-<div class="rounded shadow-2xl bg-gray-100 my-5 mx-10 p-5">
+<app-navigation></app-navigation>
+<div id="ad-gutter" class="w-3/4 mx-auto">
+  <div class="mx-auto mb-7 text-center">
+    <p class="text-lg text-white">
+      Generate random fantasy lineups optimized by Fantasy Points Per Game!
+    </p>
+  </div>
+  <div class="rounded shadow-2xl bg-gray-100 my-5 mx-10 p-5">
     <div class="text-xl font-bold mb-4 text-center">Generate Lineups</div>
     <div class="flex justify-between flex-wrap">
-        <div class="mx-3">
-            <p class="text-sm text-gray-500">Sport</p>
-            <select id="sport" (change)="changeInput($event, 'sport')" class="bg-white mb-3 focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block w-full appearance-none leading-normal" placeholder="Pick Sport...">
-                <option value="soc">SOC</option>
-            </select>
+      <div class="mx-3">
+        <p class="text-sm text-gray-500">Sport</p>
+        <select
+          id="sport"
+          (change)="changeInput($event, 'sport')"
+          class="bg-white mb-3 focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block w-full appearance-none leading-normal"
+          placeholder="Pick Sport..."
+        >
+          <option value="soc">SOC</option>
+        </select>
+      </div>
+      <div class="mx-3">
+        <p class="text-sm text-gray-500">Budget</p>
+        <input
+          id="budget"
+          (change)="changeInput($event, 'budget')"
+          class="bg-white mb-3 focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block w-full appearance-none leading-normal"
+          type="number"
+          placeholder="$50,000"
+        />
+      </div>
+      <div class="mx-3">
+        <p class="text-sm text-gray-500">Game Type</p>
+        <select
+          id="game_type"
+          (change)="changeInput($event, 'game_type')"
+          class="bg-white mb-3 focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block w-full appearance-none leading-normal"
+          placeholder="Pick Sport..."
+        >
+          <option value="soc">Classic</option>
+        </select>
+      </div>
+      <div class="mx-3">
+        <p class="text-sm text-gray-500">Number of lineups</p>
+        <input
+          id="number_of_lineups"
+          (change)="changeInput($event, 'number_of_lineups')"
+          class="bg-white mb-3 focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block w-full appearance-none leading-normal"
+          type="number"
+          placeholder="10"
+        />
+      </div>
+      <div class="mx-3">
+        <p class="text-sm text-gray-500">Upload Player CSV</p>
+        <div class="custom-file mb-3">
+          <form
+            action="/api/upload"
+            method="post"
+            enctype="multipart/form-data"
+          >
+            <input
+              type="file"
+              class="custom-file-input"
+              id="inputGroupFile01"
+              aria-describedby="inputGroupFileAddon01"
+              (change)="handleFileUpload($event.target.files)"
+            />
+          </form>
+          <label
+            class="custom-file-label text-gray-500"
+            for="inputGroupFile01"
+            id="fileInputPlaceholder"
+            >{{ uploadedFile.name }}</label
+          >
         </div>
-        <div class="mx-3">
-            <p class="text-sm text-gray-500">Budget</p>
-            <input id="budget" (change)="changeInput($event, 'budget')" class="bg-white mb-3 focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block w-full appearance-none leading-normal" type="number" placeholder="$50,000">
-        </div>
-        <div class="mx-3">
-            <p class="text-sm text-gray-500">Game Type</p>
-            <select id="game_type" (change)="changeInput($event, 'game_type')" class="bg-white mb-3 focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block w-full appearance-none leading-normal" placeholder="Pick Sport...">
-                <option value="soc">Classic</option>
-            </select>   
-        </div>
-        <div class="mx-3">
-            <p class="text-sm text-gray-500">Number of lineups</p>
-            <input id="number_of_lineups" (change)="changeInput($event, 'number_of_lineups')" class="bg-white mb-3 focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block w-full appearance-none leading-normal" type="number" placeholder="10">        
-        </div>
-        <div class="mx-3">
-            <p class="text-sm text-gray-500">Upload Player CSV</p>
-            <div class="custom-file mb-3">
-                <form action="/api/upload" method="post" enctype="multipart/form-data">
-                    <input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01" (change)="handleFileUpload($event.target.files)">
-                </form>
-                <label class="custom-file-label text-gray-500" for="inputGroupFile01" id="fileInputPlaceholder">{{uploadedFile.name}}</label>
-            </div>
-        </div>
+      </div>
     </div>
     <div class="flex justify-end mt-2">
-        <button class="rounded bg-blue-500 p-2 text-white hover:bg-blue-300" type="submit" (click)="handlePermuteClick()">Permute</button>
+      <button
+        class="rounded bg-blue-500 p-2 text-white hover:bg-blue-300"
+        type="submit"
+        (click)="handlePermuteClick()"
+      >
+        Permute
+      </button>
     </div>
-</div>
-<div class="rounded shadow-2xl bg-gray-100 my-5 mx-10 p-5">
+  </div>
+  <div class="rounded shadow-2xl bg-gray-100 my-5 mx-10 p-5">
     <div class="text-xl font-bold mb-4 text-center">Results</div>
     <div id="uploadResult" *ngFor="let team of teams; index as i">
-        <team-display [team]="team" [index]="i"></team-display>
+      <team-display [team]="team" [index]="i"></team-display>
     </div>
     <div class="flex justify-end invisible">
-        <button class="rounded bg-green-500 mr-2 p-2 text-white hover:bg-green-300">Download Results</button>
+      <button
+        class="rounded bg-green-500 mr-2 p-2 text-white hover:bg-green-300"
+      >
+        Download Results
+      </button>
     </div>
+  </div>
 </div>
-
-

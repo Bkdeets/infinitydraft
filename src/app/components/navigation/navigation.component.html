@@ -1,0 +1,50 @@
+<script>
+  window.onclick = function(e) {
+    if (!e.target.matches('.dropbtn')) {
+    var myDropdown = document.getElementById("myDropdown");
+      if (myDropdown.classList.contains('show')) {
+        myDropdown.classList.remove('show');
+      }
+    }
+  }
+</script>
+<nav class="flex items-center justify-between bg-grad flex-wrap p-4">
+  <div class="flex items-center flex-shrink-0 text-white mr-6">
+    <span class="font-semibold text-2xl tracking-tight">Infinity Draft</span>
+  </div>
+  <div class="dropdown rounded">
+    <button class="dropbtn px-3 py-2 lg:hidden" (click)="showMenuDropdown()">
+      <svg class="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+        <title>Menu</title>
+        <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
+      </svg>
+    </button>
+    <div id="id-dropdown" class="dropdown-content rounded bg-white">
+      <a href="#" (click)="openModal('about')"
+        class="inline-block text-sm px-2 py-2 leading-none rounded-t text-teal-200 lg:mt-0 hover:text-white"
+        >About</a>
+      <a href="#" (click)="openModal('how-to-use')"
+        class="inline-block text-sm px-2 pr-4 py-2 leading-none rounded-b text-teal-200 lg:mt-0 hover:text-white"
+        >How to use</a>
+    </div>
+  </div>
+  <div class="w-full block flex-grow items-center lg:flex lg:w-auto sm:hidden md:hidden">
+    <div class="text-sm lg:flex-grow"></div>
+    <div>
+      <a
+        href="#"
+        (click)="openModal('about')"
+        class="inline-block text-sm px-2 py-2 leading-none rounded text-teal-200 lg:mt-0 hover:text-white"
+        >About</a
+      >
+      <a
+        href="#"
+        (click)="openModal('how-to-use')"
+        class="inline-block text-sm px-2 pr-4 py-2 leading-none rounded text-teal-200 lg:mt-0 hover:text-white"
+        >How to use</a
+      >
+    </div>
+  </div>
+</nav>
+<app-about></app-about>
+<app-how-to-use></app-how-to-use>

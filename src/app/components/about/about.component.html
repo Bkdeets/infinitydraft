@@ -1,0 +1,42 @@
+<jw-modal id="about">
+    <div class="mt-3 mb-4">
+        <h1 class="text-xl text-center font-weight-bold">About</h1>
+    </div>
+    <div class="flex w-10/12 mx-auto">
+        <p class="mb-4 text-lg">
+            Daily fantasy lineups can be hard and time-consuming to make if you are trying to max enter
+            a contest, or cover your bases for possible outcomes. Infinity Draft was developed to 
+            make the process of creating unique lineups easier by generating random lineups, biased
+            towards creating lineups which contain players who score higher on average. Here are the 
+            steps we use to generate permutations:
+        </p>
+    </div>
+    <div class="flex w-10/12 mx-auto">
+        <ul class="mb-2">
+            <li class="mb-2">
+                <b>1</b> Process CSV file into an internal data format
+            </li>
+            <li class="mb-2">
+                <b>2</b> Sort players by their Average Fantasy Points Per Game
+            </li>
+            <li class="mb-2">
+                <b>3</b> Generate a random seed and pick a player from the list of players to add to 
+                    the lineup.
+                    We can repeat this process up to 10,000 times per team in order to generate
+                    a unique lineup.
+            </li>
+            <li class="mb-2">
+                <b>4</b> We repeat step 3 until 1,000,000 random choices have been made
+            </li>
+            <li class="mb-2">
+                <b>5</b> We sort the resulting teams and display the ones with the highest score
+            </li>
+        </ul>
+    </div>
+    <div class="flex justify-end justify-content-end">
+        <button 
+            class="bg-red-500 rounded hover:bg-red-300 text-white py-1 px-2"
+            (click)="closeModal('about')">Close
+        </button>
+    </div>
+</jw-modal>

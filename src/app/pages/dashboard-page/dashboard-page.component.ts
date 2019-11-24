@@ -1,3 +1,4 @@
+import { ModalService } from '../../modules/modal/modal.service';
 import { PermuterService } from './../../services/permuter.service';
 import { ApiWrapperService } from './../../services/api-wrapper.service';
 import { Component, OnInit } from '@angular/core';
@@ -14,13 +15,16 @@ export class DashboardPageComponent implements OnInit {
   wrapper: ApiWrapperService;
   permuter: PermuterService;
   teams: any;
+  modalService: ModalService;
 
   formValues: any;
 
 
   constructor(
-    wrapper: ApiWrapperService) {
+    wrapper: ApiWrapperService,
+    modalService: ModalService) {
     this.wrapper = wrapper;
+    this.modalService = modalService;
     this.permuter = new PermuterService();
     this.permuter.budget = 50000;
     this.formValues = {};
@@ -64,5 +68,13 @@ export class DashboardPageComponent implements OnInit {
   changeFileInputPlaceholderTextColor(){
     const elem = document.getElementById('fileInputPlaceholder');
     elem.style.color = "black";
+  }
+
+  openModal(id: string) {
+    this.modalService.open(id);
+  }
+
+  closeModal(id: string) {
+    this.modalService.close(id);
   }
 }
