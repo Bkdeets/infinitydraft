@@ -51,18 +51,32 @@ export class DashboardPageComponent implements OnInit {
     if(this.uploadedFile.isDemo){
       console.log('no file -- build an alert box');
     }
-    console.log(this.formValues);
-    
-    parse(this.uploadedFile, {
-      complete: (results) => {
-        this.teams = this.permuter.permute(
-          results.data, 
-          +this.formValues.budget,
-          this.formValues.sport,
-          this.formValues.game_type,
-          this.formValues.number_of_lineups);
-      }
-    });
+
+    if (typeof Worker !== 'undefined') {
+      const worker = new Worker('./../../permuter.worker', { type: 'module' });
+      worker.onmessage = ({ data }) => {
+        this.teams = data;
+      };
+      worker.postMessage({
+        file: this.uploadedFile,
+        budget: +this.formValues.budget,
+        sport: this.formValues.sport,
+        game_type: this.formValues.game_type,
+        number_of_lineups: this.formValues.number_of_lineups
+      });
+    } else {
+      console.log('Web Workers are not supported in this environment.');
+      parse(this.uploadedFile, {
+        complete: (results) => {
+          this.teams = this.permuter.permute(
+            results.data, 
+            +this.formValues.budget,
+            this.formValues.sport,
+            this.formValues.game_type,
+            this.formValues.number_of_lineups);
+        }
+      });
+    }
   }
     
   changeFileInputPlaceholderTextColor(){

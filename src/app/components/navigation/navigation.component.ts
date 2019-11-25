@@ -25,9 +25,6 @@ export class NavigationComponent implements OnInit {
   }
 
   showMenuDropdown() {
-    console.log('click dropdown');
-    console.log( document.getElementById("id-dropdown").classList)
     document.getElementById("id-dropdown").classList.toggle("show");
-    console.log( document.getElementById("id-dropdown").classList)
   }
 }

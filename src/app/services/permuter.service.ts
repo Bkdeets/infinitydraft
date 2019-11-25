@@ -1,12 +1,5 @@
 import { Player } from './../objects/Player';
-import { Injectable } from '@angular/core';
-import { parse } from 'papaparse';
-import { ThrowStmt } from '@angular/compiler';
-import { timeout } from 'q';
 
-@Injectable({
-  providedIn: 'root'
-})
 export class PermuterService {
   players: Array<Player>;
   budget: number;
@@ -16,10 +9,15 @@ export class PermuterService {
 
   constructor(){}
 
+  getTeams(){
+    return this.teams;
+  }
+
   permute(players, budget, sport, game_type, number_of_lineups) {
     this.createPlayers(players);
     this.sortPlayers();
-    return this.generatePerms(budget, number_of_lineups);
+    this.teams = this.generatePerms(budget, number_of_lineups);
+    return this.teams;
   }
 
   createPlayers(playersList){
