@@ -12,7 +12,8 @@ addEventListener('message', ({ data }) => {
         data.budget,
         data.sport,
         data.game_type,
-        data.number_of_lineups);
+        data.number_of_lineups,
+        data.fppgRange);
       postMessage(teams);
     }
   })

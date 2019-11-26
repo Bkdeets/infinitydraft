@@ -6,6 +6,7 @@ export class PermuterService {
   gameType: String;
   teams: any;
   isReady: boolean;
+  fppgRange: number;
 
   constructor(){}
 
@@ -13,10 +14,10 @@ export class PermuterService {
     return this.teams;
   }
 
-  permute(players, budget, sport, game_type, number_of_lineups) {
+  permute(players, budget, sport, game_type, number_of_lineups, fppgRange) {
     this.createPlayers(players);
     this.sortPlayers();
-    this.teams = this.generatePerms(budget, number_of_lineups);
+    this.teams = this.generatePerms(budget, number_of_lineups, fppgRange);
     return this.teams;
   }
 
@@ -82,7 +83,7 @@ export class PermuterService {
     return false;
   }
 
-  generatePerms(budget, number_of_lineups){
+  generatePerms(budget, number_of_lineups, fppgRange){
     this.processPositions();
         
     let teams = [];
@@ -90,7 +91,7 @@ export class PermuterService {
     let iterations = 0;
     while(teams.length < 1000 && iterations < 10000000){
       let playersCopy: Array<Player> = Object.assign([], this.players);
-      playersCopy = playersCopy.splice(0,Math.round(playersCopy.length/2));
+      playersCopy = playersCopy.splice(0,Math.round((fppgRange/100)*playersCopy.length));
       let budgetCopy = budget;
       let limits = {
           D: 2,

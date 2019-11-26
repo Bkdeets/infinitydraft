@@ -59,10 +59,11 @@ export class DashboardPageComponent implements OnInit {
       };
       worker.postMessage({
         file: this.uploadedFile,
-        budget: +this.formValues.budget,
+        budget: 50000,
         sport: this.formValues.sport,
         game_type: this.formValues.game_type,
-        number_of_lineups: this.formValues.number_of_lineups
+        number_of_lineups: this.formValues.number_of_lineups,
+        fppgRange: 50
       });
     } else {
       console.log('Web Workers are not supported in this environment.');
@@ -70,10 +71,11 @@ export class DashboardPageComponent implements OnInit {
         complete: (results) => {
           this.teams = this.permuter.permute(
             results.data, 
-            +this.formValues.budget,
+            50000,
             this.formValues.sport,
             this.formValues.game_type,
-            this.formValues.number_of_lineups);
+            this.formValues.number_of_lineups,
+            50);
         }
       });
     }
