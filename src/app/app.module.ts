@@ -9,6 +9,7 @@ import { ModalModule } from './modules/modal/modal.module';
 import { NavigationComponent } from './components/navigation/navigation.component';
 import { AboutComponent } from './components/about/about.component';
 import { HowToUseComponent } from './components/how-to-use/how-to-use.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { HowToUseComponent } from './components/how-to-use/how-to-use.component'
     TeamDisplayComponent,
     NavigationComponent,
     AboutComponent,
-    HowToUseComponent
+    HowToUseComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
